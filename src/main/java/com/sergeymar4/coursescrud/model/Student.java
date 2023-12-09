@@ -3,11 +3,11 @@ package com.sergeymar4.coursescrud.model;
 import java.util.ArrayList;
 
 public class Student {
+    private int id;
     private String firstName;
     private String secondName;
     private ArrayList<Course> courses;
     private int age;
-    private int id;
 
     public String getFirstName() {
         return firstName;
@@ -52,9 +52,11 @@ public class Student {
     @Override
     public String toString() {
         return "Student{" +
-                "firstName='" + firstName + '\'' +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
                 ", secondName='" + secondName + '\'' +
                 ", courses=" + courses +
+                ", age=" + age +
                 '}';
     }
 }

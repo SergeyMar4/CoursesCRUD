@@ -13,7 +13,15 @@ public class TeacherController {
         this.teacherRepository = new TeacherRepository();
     }
 
-    public ArrayList<Teacher> getAllName(String name) throws TeacherError {
-        return teacherRepository.getAllName(name);
+    public ArrayList<Teacher> getAllByName(String name) throws TeacherError {
+        return teacherRepository.getAllByName(name);
+    }
+
+    public ArrayList<Teacher> getAll() {
+        return teacherRepository.getAll();
+    }
+
+    public Teacher getById(int id) throws TeacherError {
+        return teacherRepository.getById(id);
     }
 }

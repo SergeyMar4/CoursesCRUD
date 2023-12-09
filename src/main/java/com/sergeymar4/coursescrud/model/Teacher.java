@@ -1,12 +1,21 @@
 package com.sergeymar4.coursescrud.model;
 
 public class Teacher {
+    private int id;
     private String firstName;
     private String secondName;
     private String specialization;
 
     public String getFirstName() {
         return firstName;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setFirstName(String firstName) {
@@ -32,7 +41,8 @@ public class Teacher {
     @Override
     public String toString() {
         return "Teacher{" +
-                "firstName='" + firstName + '\'' +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
                 ", secondName='" + secondName + '\'' +
                 ", specialization='" + specialization + '\'' +
                 '}';

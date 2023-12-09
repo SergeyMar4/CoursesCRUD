@@ -20,6 +20,4 @@ public class CourseController {
     public ArrayList<Course> getAll() {
         return courseRepository.getAll();
     }
-
-
 }

@@ -12,9 +12,9 @@ import java.util.Arrays;
 
 public class TeacherRepository {
 
-    private final String FILE_NAME = "src/main/resources/teacher.json";
+    private final String FILE_NAME = "src/main/resources/teachers.json";
 
-    public ArrayList<Teacher> getAllName(String name) throws TeacherError {
+    public ArrayList<Teacher> getAllByName(String name) throws TeacherError {
         ArrayList<Teacher> teachers = readJson();
         ArrayList<Teacher> teachersReplayName = new ArrayList<>();
         int count = 0;
@@ -32,6 +32,21 @@ public class TeacherRepository {
         else {
             throw new TeacherError("Преподавателя с таким именем нет");
         }
+    }
+
+    public Teacher getById(int id) throws TeacherError {
+        ArrayList<Teacher> teachers = readJson();
+
+        for (Teacher teacher : teachers) {
+            if (teacher.getId() == id) {
+                return teacher;
+            }
+        }
+        throw new TeacherError("Преподавателя с таким id нет");
+    }
+
+    public ArrayList<Teacher> getAll() {
+        return readJson();
     }
 
     private ArrayList<Teacher> readJson() {

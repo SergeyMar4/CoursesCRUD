@@ -8,11 +8,9 @@ import java.util.ArrayList;
 
 public class StudentController {
     private StudentRepository studentRepository;
-    private Student student;
 
     public StudentController() {
         this.studentRepository = new StudentRepository();
-        this.student = new Student();
     }
 
     public Student getById(int id) throws StudentError {
@@ -24,6 +22,7 @@ public class StudentController {
     }
 
     public void create(String firstName, String secondName, int age) {
+        Student student = new Student();
         student.setFirstName(firstName);
         student.setSecondName(secondName);
         student.setAge(age);

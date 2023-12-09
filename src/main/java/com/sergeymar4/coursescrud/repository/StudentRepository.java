@@ -10,7 +10,7 @@ import java.util.Arrays;
 
 public class StudentRepository {
 
-    private final String FILE_NAME = "scr/main/resources/student.json";
+    private final String FILE_NAME = "src/main/resources/students.json";
 
     public Student getById(int id) throws StudentError {
         ArrayList<Student> students = readJson();
