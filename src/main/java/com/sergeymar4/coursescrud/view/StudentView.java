@@ -33,7 +33,7 @@ public class StudentView {
                 try {
                     System.out.println(studentController.getById(id));
                 } catch (StudentError e) {
-                    System.out.println(e);
+                    System.out.println(e.getMessage());
                 }
             } else if (s.equals("3")) {
                 System.out.println("Введите имя студента: ");

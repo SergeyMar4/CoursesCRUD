@@ -1,0 +1,1 @@
+[{"id":1,"title":"Математика","teacher":{"id":2,"firstName":"Елена","secondName":"Пастухова","specialization":"Математика"}},{"id":2,"title":"Физика","teacher":{"id":3,"firstName":"Станислав","secondName":"Прошкин"}},{"id":3,"title":"ОРГ","teacher":{"id":4,"firstName":"Борис","secondName":"Исаев","specialization":"ОРГ"}}]

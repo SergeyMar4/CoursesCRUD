@@ -4,9 +4,7 @@ import com.google.gson.Gson;
 import com.sergeymar4.coursescrud.errors.TeacherError;
 import com.sergeymar4.coursescrud.model.Teacher;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -49,6 +47,26 @@ public class TeacherRepository {
         return readJson();
     }
 
+    public void save(Teacher teacher) {
+        ArrayList<Teacher> teachers = readJson();
+        teacher.setId(getMaxId() + 1);
+        teachers.add(teacher);
+        write(teachers);
+    }
+
+    public int getMaxId() {
+        ArrayList<Teacher> teachers = readJson();
+        int maxId = 0;
+
+        for (Teacher teacher : teachers) {
+            if (teacher.getId() > maxId) {
+                maxId = teacher.getId();
+            }
+        }
+
+        return maxId;
+    }
+
     private ArrayList<Teacher> readJson() {
         StringBuilder json = new StringBuilder();
 
@@ -63,5 +81,13 @@ public class TeacherRepository {
         Teacher[] teachers = new Gson().fromJson(json.toString(), Teacher[].class);
 
         return new ArrayList<Teacher>(Arrays.asList(teachers));
+    }
+
+    private void write(ArrayList<Teacher> teachers) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_NAME))) {
+            bw.write(new Gson().toJson(teachers));
+        } catch (IOException e) {
+            System.out.println(e);
+        }
     }
 }

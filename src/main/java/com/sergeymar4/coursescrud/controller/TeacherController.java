@@ -24,4 +24,12 @@ public class TeacherController {
     public Teacher getById(int id) throws TeacherError {
         return teacherRepository.getById(id);
     }
+
+    public void create(String firstName, String secondName, String specialization) {
+        Teacher teacher = new Teacher();
+        teacher.setFirstName(firstName);
+        teacher.setSecondName(secondName);
+        teacher.setSpecialization(specialization);
+        teacherRepository.save(teacher);
+    }
 }

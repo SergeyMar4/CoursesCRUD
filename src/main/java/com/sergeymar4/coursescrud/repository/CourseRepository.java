@@ -3,6 +3,7 @@ package com.sergeymar4.coursescrud.repository;
 import com.google.gson.Gson;
 import com.sergeymar4.coursescrud.errors.CourseError;
 import com.sergeymar4.coursescrud.model.Course;
+import com.sergeymar4.coursescrud.model.Teacher;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -27,11 +28,34 @@ public class CourseRepository {
         return readJson();
     }
 
-    public void save(Course course) {
-        course.setId(getMaxId() + 1);
+    public void save(Course course, String firstName, String secondName, String specialization) {
+        TeacherRepository teacherRepository = new TeacherRepository();
+        ArrayList<Teacher> teachers = teacherRepository.getAll();
         ArrayList<Course> courses = readJson();
-        courses.add(course);
-        write(courses);
+        boolean flag = false;
+
+        for (Teacher teacher : teachers) {
+            if (teacher.getSecondName().equals(secondName)) {
+                course.setTeacher(teacher);
+                course.setId(getMaxId() + 1);
+                courses.add(course);
+                write(courses);
+                flag = true;
+                break;
+            }
+        }
+
+        if (!flag) {
+            Teacher teacher = new Teacher();
+            teacher.setFirstName(firstName);
+            teacher.setSecondName(secondName);
+            teacher.setSpecialization(specialization);
+            teacherRepository.save(teacher);
+            course.setTeacher(teacher);
+            course.setId(getMaxId() + 1);
+            courses.add(course);
+            write(courses);
+        }
     }
 
     public int getMaxId() {

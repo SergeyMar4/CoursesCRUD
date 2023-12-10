@@ -22,11 +22,29 @@ public class Course {
         this.teacher = teacher;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
-        return "Courses{" +
-                "number=" + id +
-                ", teacher='" + teacher + '\'' +
+        return "Course{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", teacher=" + teacher +
                 '}';
     }
 }
